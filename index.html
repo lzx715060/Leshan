@@ -206,79 +206,79 @@
           title: 'Leshan Confucian Temple',
           lnglat: [103.761523, 29.558502],
           description: `<p><strong>Address:</strong> Shizhong District, Leshan, Sichuan Province</p><p><strong>History:</strong> Originally built in the Tang Dynasty; the existing structures are in Ming and Qing styles</p><p><strong>Features:</strong> One of the best-preserved Confucian temples in Sichuan</p>`,
-          imageUrl: 'https://gips1.baidu.com/it/u=439895556,2876044158&fm=3074&app=3074&f=JPEG'
+          imageUrl: './images/leshan_confucian_temple_marker.jpg'
         },
         {
           title: 'Panchi Pond',
           lnglat: [103.762005, 29.558418],
           description: `<p><strong>Location:</strong> In front of the Leshan Confucian Temple</p><p><strong>Features:</strong> A semicircular pond symbolizing the importance of culture and education</p>`,
-          imageUrl: 'https://img2.baidu.com/it/u=3891230473,1588201853&fm=253&fmt=auto&app=138&f=JPEG?w=785&h=500'
+          imageUrl: './images/panchi_pond_marker.jpg'
         },
         {
           title: 'Lingxing Gate',
           lnglat: [103.761705, 29.558432],
           description: `<p><strong>Location:</strong> At the entrance of the Leshan Confucian Temple</p><p><strong>Features:</strong> A stone archway-style structure serving as the main entrance to the temple</p>`,
-          imageUrl: 'https://bkimg.cdn.bcebos.com/pic/279759ee3d6d55fbb2fbe1d91769584a20a4472377b2'
+          imageUrl: './images/lingxing_gate_local.jpg'
         },
         {
           title: 'Longshen Shrine',
           lnglat: [103.768212, 29.557461],
           description: `<p><strong>Location:</strong> An important historic building in central Leshan, Sichuan Province</p><p><strong>Features:</strong> Served as a dormitory during the wartime relocation of National Wuhan University to Leshan; restored in 2020 with an exhibition installed.</p>`,
-          imageUrl: 'https://img0.baidu.com/it/u=93100293,4279403167&fm=253&app=138&f=JPEG?w=666&h=500'
+          imageUrl: './images/longshen_shrine_marker.jpg'
         },
         {
           title: 'Leshan Giant Buddha',
           lnglat: [103.771924, 29.544073],
           description: `<p><strong>Location:</strong> Beside Lingyun Temple on the east bank of the Min River in southern Leshan</p><p><strong>Features:</strong> The world's largest stone-carved Buddha statue</p>`,
-          imageUrl: 'https://img0.baidu.com/it/u=3815080334,524816635&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=749'
+          imageUrl: './images/leshan_giant_buddha_marker.jpg'
         },
         {
           title: 'Memorial to the Wartime Relocation of National Wuhan University',
           lnglat: [103.751098, 29.557706],
           description: `<p><strong>Location:</strong> In western Leshan</p><p><strong>Features:</strong> Commemorates the 75th anniversary of Wuhan University's relocation to Leshan</p>`,
-          imageUrl: 'https://bkimg.cdn.bcebos.com/pic/bd315c6034a85edfde17f5ac45540923dc5475a1?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080'
+          imageUrl: './images/wuhan_university_relocation_memorial_marker.jpg'
         },
         {
           title: 'Former Site of Wuhan University Dormitory No. 5',
           lnglat: [103.767309, 29.562531],
           description: `<p><strong>Location:</strong> Present-day Leshan No. 5 Middle School</p>`,
-          imageUrl: ''
+          imageUrl: './images/wuhan_university_second_male_dormitory_historic.jpg'
         },
         {
           title: 'Former Site of Wuhan University Dormitory No. 1',
           lnglat: [103.762245, 29.557608],
           description: `<p><strong>Location:</strong> Near the current Petition Bureau of the Leshan Municipal People's Government</p>`,
-          imageUrl: ''
+          imageUrl: './images/wuhan_university_site_historic_gate.jpg'
         },
         {
           title: "Former Site of Wuhan University Women's Dormitory",
           lnglat: [103.757009, 29.556255],
           description: `<p><strong>Location:</strong> Near the current Leshan People's Hospital</p>`,
-          imageUrl: ''
+          imageUrl: './images/wu_girls_dormitory_historic.png'
         },
         {
           title: 'Former Site of Wuhan University College of Science',
           lnglat: [103.754772, 29.555788],
           description: `<p><strong>Location:</strong> Present-day Hama Alley, Leshan</p>`,
-          imageUrl: ''
+          imageUrl: './images/wuhan_university_college_of_science_historic.jpg'
         },
         {
           title: 'Former Site of Wuhan University College of Engineering',
           lnglat: [103.75157, 29.557967],
           description: `<p><strong>Location:</strong> Near the relocation memorial</p>`,
-          imageUrl: ''
+          imageUrl: './images/wuhan_university_college_of_engineering_historic.jpg'
         },
         {
           title: 'Former Site of Wuhan University Dormitory No. 4',
           lnglat: [103.750604, 29.556362],
           description: `<p><strong>Location:</strong> Present-day Leshan No. 5 Middle School</p>`,
-          imageUrl: ''
+          imageUrl: './images/wuhan_university_second_male_dormitory_historic.jpg'
         },
         {
           title: 'Former Site of Wuhan University Dormitory No. 6',
           lnglat: [103.748973, 29.55647],
           description: `<p><strong>Location:</strong> Present-day Banzhuwan Community, Leshan</p>`,
-          imageUrl: ''
+          imageUrl: './images/wuhan_university_site_historic_gate.jpg'
         }
       ];
 
@@ -292,8 +292,8 @@
         });
 
         const markerIcon = (location.title === 'Leshan Confucian Temple' || location.title.includes('Wuhan University')) 
-          ? 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png' 
-          : 'https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png';
+          ? './images/mark_b_local.png' 
+          : './images/mark_r_local.png';
 
         const marker = new AMap.Marker({
           position: new AMap.LngLat(...location.lnglat),
@@ -539,22 +539,22 @@
     {
       title: "Dacheng Hall of the Confucian Temple",
       description: "The main hall of the Confucian Temple, dedicated to Confucius, featuring a solemn and elegant architectural style.",
-      image: "https://aigc-image.bj.bcebos.com/miaobi/5mao/b%275LmQ5bGx5paH5bqZXzE3MjUxNTY0NTYuOTA1MDg2NV8xNzI1MTU2NDU3LjU5MDI2MjJfMTcyNTE1NjQ1OC40NzgyMjc0XzE3MjUxNTY0NTkuNDI2MTg0Mg%3D%3D%27/3.png"
+      image: "./images/dacheng_hall_local.jpg"
     },
     {
       title: "Lingxing Gate",
       description: "The main gate of the Confucian Temple, symbolizing that Confucius may be compared to the literary star in the heavens.",
-      image: "https://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275LmQ5bGx5paH5bqZXzE3MzY4MDI4MTguMzA1NTc3Mw%3D%3D%27/0.png"
+      image: "./images/lingxing_gate_local.jpg"
     },
     {
       title: "Longshen Shrine",
       description: "A witness to the special history of Chinese higher education institutions persisting in teaching during wartime.",
-      image: "https://wenxxy.lsnu.edu.cn/__local/E/98/75/ADE652B2CC4883F27239846C1FB_F835B76D_C2F8F.png"
+      image: "./images/longshen_shrine_card.jpg"
     },
     {
       title: "Leshan Giant Buddha",
       description: "Majestic and solemn in presence, it is the largest cliff-carved stone statue in China.",
-      image: "https://bkimg.cdn.bcebos.com/pic/574e9258d109b3de9c82104600f57b81800a19d8e6c0"
+      image: "./images/leshan_giant_buddha_card.jpg"
     }
   ];
 
@@ -632,14 +632,14 @@
                     </div>
                     <div class="relative">
                         <div class="bg-white rounded-xl shadow-xl overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                            <img src="https://bkimg.cdn.bcebos.com/pic/2fdda3cc7cd98d1001e9dee85b74af0e7bec55e73a9c" alt="Panoramic View of the Leshan Confucian Temple" class="w-full h-auto">
+                            <img src="./images/leshan_confucian_temple_panorama_local.png" alt="Panoramic View of the Leshan Confucian Temple" class="w-full h-auto">
                             <div class="p-6">
                                 <h4 class="font-semibold text-primary text-lg">Panoramic View of the Leshan Confucian Temple</h4>
                                 <p class="text-gray-600 text-sm">Most of the existing buildings of the Leshan Confucian Temple were reconstructed during the Ming and Qing dynasties. Covering an area of about 20,000 square meters, it is an important physical resource for studying ancient Chinese architectural art and Confucian culture.</p>
                             </div>
                         </div>
                         <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg overflow-hidden transform -rotate-3 hover:rotate-0 transition-transform duration-500 w-2/3">
-                            <img src="https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F1129%2F4ac72c95j00s4vwhf00dbd000hs00kup.jpg&thumbnail=660x2147483647&quality=80&type=jpg" alt="Former Wuhan University Site in Leshan" class="w-full h-auto">
+                            <img src="./images/wuhan_university_site_historic_gate.jpg" alt="Former Wuhan University Site in Leshan" class="w-full h-auto">
                             <div class="p-4">
                                 <h4 class="font-semibold text-primary">Former Wuhan University Site in Leshan</h4>
                                 <p class="text-gray-600 text-xs">During the War of Resistance Against Japanese Aggression, the teachers and students of Wuhan University continued education in Leshan, creating a brilliant legacy praised as "wartime glory, remembered through the ages."</p>
@@ -656,7 +656,7 @@
     <div id="heritage-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div class="relative">
-                <img id="modal-image" src="https://picsum.photos/id/1031/1200/600" alt="Heritage Relic Image" class="w-full h-64 md:h-80 object-cover">
+                <img id="modal-image" src="./images/modal_placeholder_local.jpg" alt="Heritage Relic Image" class="w-full h-64 md:h-80 object-cover">
                 <button id="close-modal" class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors">
                     <i class="fa fa-times"></i>
                 </button>

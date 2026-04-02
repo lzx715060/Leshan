@@ -1,0 +1,30 @@
+Put index_local_images.html and the images/ folder at the same directory level:
+
+leshan_site_assets/
+  index_local_images.html
+  images/
+    leshan_confucian_temple_marker.jpg
+    panchi_pond_marker.jpg
+    lingxing_gate_local.jpg
+    longshen_shrine_marker.jpg
+    leshan_giant_buddha_marker.jpg
+    wuhan_university_relocation_memorial_marker.jpg
+    wu_girls_dormitory_historic.png
+    wuhan_university_college_of_science_historic.jpg
+    wuhan_university_college_of_engineering_historic.jpg
+    wuhan_university_second_male_dormitory_historic.jpg
+    wuhan_university_site_historic_gate.jpg
+    dacheng_hall_local.jpg
+    longshen_shrine_card.jpg
+    leshan_giant_buddha_card.jpg
+    leshan_confucian_temple_panorama_local.png
+    modal_placeholder_local.jpg
+    mark_b_local.png
+    mark_r_local.png
+
+Notes:
+- Dormitory No.5 / No.4 use a representative historic male-dormitory photo.
+- Dormitory No.1 / No.6 use a representative historic Wuhan University-in-Leshan site photo.
+- Women's Dormitory uses a girls' dormitory historic image.
+- College of Science uses a historic Li Gongci / science-college image.
+- College of Engineering uses a historic Sanyu School / engineering-site image.
