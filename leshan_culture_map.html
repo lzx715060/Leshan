@@ -1,0 +1,846 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leshan Confucian Temple & Former Wuhan University Site - Distribution of Architecture and Cultural Relics</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- ECharts CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+    
+    <!-- 高德地图 JS SDK -->
+    <script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=2.0&key=4c4568f90453ae20b6083c3b4077d6f2"></script>
+</head>
+    
+    <!-- 配置Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a365d', // 深蓝色主色调
+                        secondary: '#b7791f', // 金色辅助色
+                        neutral: '#f7fafc', // 浅色背景
+                        dark: '#1a202c', // 深色文本
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral text-dark min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-primary/95 text-white shadow-lg backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-map-o text-2xl text-secondary"></i>
+                <h1 class="text-xl md:text-2xl font-bold tracking-tight">Leshan Confucian Temple & Former Wuhan University Site</h1>
+            </div>
+            
+            <!-- 桌面导航 -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#map-section" class="text-white hover:text-secondary transition-colors duration-300">Map</a>
+                <a href="#statistics" class="text-white hover:text-secondary transition-colors duration-300">Statistics</a>
+                <a href="#heritage-list" class="text-white hover:text-secondary transition-colors duration-300">Heritage Relics</a>
+                <a href="#about" class="text-white hover:text-secondary transition-colors duration-300">About the Project</a>
+            </nav>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden bg-primary/95 backdrop-blur-sm">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="#map-section" class="text-white hover:text-secondary transition-colors duration-300 py-2">Map</a>
+                <a href="#statistics" class="text-white hover:text-secondary transition-colors duration-300 py-2">Statistics</a>
+                <a href="#heritage-list" class="text-white hover:text-secondary transition-colors duration-300 py-2">Heritage Relics</a>
+                <a href="#about" class="text-white hover:text-secondary transition-colors duration-300 py-2">About the Project</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main class="flex-grow">
+        <!-- 英雄区域 -->
+        <section class="relative bg-primary overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/60 z-10"></div>
+            <div class="container mx-auto px-4 py-10 md:py-16 relative z-20">
+                <div class="max-w-3xl">
+                    <h2 class="text-[clamp(1.5rem,4vw,3rem)] font-bold text-white leading-tight text-shadow mb-4">
+                        Leshan Confucian Temple & Former Wuhan University Site<br>Distribution of Architecture and Cultural Relics
+                    </h2>
+                    <p class="text-[clamp(0.9rem,1.8vw,1.1rem)] text-white/90 mb-6 max-w-2xl">
+                        Explore the historical and cultural heritage of the Leshan Confucian Temple and the former Wuhan University site, and learn about the locations and historical background of these precious buildings and relics.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#map-section" class="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            Explore the Map <i class="fa fa-map-marker ml-2"></i>
+                        </a>
+                        <a href="#about" class="bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            Learn About the Project <i class="fa fa-info-circle ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 背景装饰 -->
+            <div class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-neutral to-transparent z-20"></div>
+        </section>
+
+<!-- 地图部分 -->
+<section id="map-section" class="py-16 bg-neutral">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl font-bold text-gray-800">Map of the Leshan Confucian Temple and Former Wuhan University Site</h2>
+    </div>
+
+    <!-- 地图容器 -->
+    <div id="map" style="width: 100%; height: 500px;"></div>
+
+    <!-- 控制面板 -->
+    <div class='input-card mt-4'>
+      <div class="input-item">
+        <input type="checkbox" onclick="toggleScale(this)" />Scale
+      </div>
+      <div class="input-item">
+        <input type="checkbox" id="toolbar" onclick="toggleToolBar(this)" />Toolbar
+      </div>
+      <div class="input-item">
+        <input type="checkbox" id="controlBar" onclick="toggleControlBar(this)" />Control Bar
+      </div>
+      <div class="input-item">
+        <input type="checkbox" id="overview" checked onclick="toggleOverViewShow(this)" />Show Overview Map
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let map;
+  let scale, toolBar, controlBar, overView;
+
+  // 创建信息窗口内容
+  function createInfoWindow(title, description, imageUrl) {
+    const imageHtml = imageUrl
+      ? `<div style="margin-bottom: 10px;">
+           <img src="${imageUrl}"
+                width="180"
+                height="120"
+                style="object-fit: cover; border-radius: 4px;" />
+         </div>`
+      : '';
+    const linkHtml = imageUrl
+      ? `<a href="https://baike.baidu.com/item/${title}"
+           target="_blank"
+           style="display: inline-block; margin-top: 10px; color: #0288d1; text-decoration: none;">
+           🔗 Baidu Baike Details
+         </a>`
+      : '';
+
+    return `
+      <div style="padding: 10px; max-width: 250px; font-family: Arial, sans-serif;">
+        <h3 style="margin: 0 0 10px 0; font-size: 16px; color: #333;">${title}</h3>
+        ${imageHtml}
+        ${description}
+        ${linkHtml}
+      </div>
+    `;
+  }
+
+  window.onload = function () {
+    AMap.plugin([
+      'AMap.Scale',
+      'AMap.ToolBar',
+      'AMap.ControlBar',
+      'AMap.HawkEye'
+    ], function () {
+      scale = new AMap.Scale({ visible: false });
+      toolBar = new AMap.ToolBar({position: 'RT', 
+    visible: false });
+      controlBar = new AMap.ControlBar({ visible: false });
+      overView = new AMap.HawkEye({ visible: true });
+
+      map = new AMap.Map("map", {
+        resizeEnable: true,
+        zoom: 16,
+        center: [103.761581, 29.558674],
+      });
+
+      map.addControl(scale);
+      map.addControl(toolBar);
+      map.addControl(controlBar);
+      map.addControl(overView);
+
+      // 标记点数据
+      const locations = [
+        {
+          title: 'Leshan Confucian Temple',
+          lnglat: [103.761523, 29.558502],
+          description: `<p><strong>Address:</strong> Shizhong District, Leshan, Sichuan Province</p><p><strong>History:</strong> Originally built in the Tang Dynasty; the existing structures are in Ming and Qing styles</p><p><strong>Features:</strong> One of the best-preserved Confucian temples in Sichuan</p>`,
+          imageUrl: 'https://gips1.baidu.com/it/u=439895556,2876044158&fm=3074&app=3074&f=JPEG'
+        },
+        {
+          title: 'Panchi Pond',
+          lnglat: [103.762005, 29.558418],
+          description: `<p><strong>Location:</strong> In front of the Leshan Confucian Temple</p><p><strong>Features:</strong> A semicircular pond symbolizing the importance of culture and education</p>`,
+          imageUrl: 'https://img2.baidu.com/it/u=3891230473,1588201853&fm=253&fmt=auto&app=138&f=JPEG?w=785&h=500'
+        },
+        {
+          title: 'Lingxing Gate',
+          lnglat: [103.761705, 29.558432],
+          description: `<p><strong>Location:</strong> At the entrance of the Leshan Confucian Temple</p><p><strong>Features:</strong> A stone archway-style structure serving as the main entrance to the temple</p>`,
+          imageUrl: 'https://bkimg.cdn.bcebos.com/pic/279759ee3d6d55fbb2fbe1d91769584a20a4472377b2'
+        },
+        {
+          title: 'Longshen Shrine',
+          lnglat: [103.768212, 29.557461],
+          description: `<p><strong>Location:</strong> An important historic building in central Leshan, Sichuan Province</p><p><strong>Features:</strong> Served as a dormitory during the wartime relocation of National Wuhan University to Leshan; restored in 2020 with an exhibition installed.</p>`,
+          imageUrl: 'https://img0.baidu.com/it/u=93100293,4279403167&fm=253&app=138&f=JPEG?w=666&h=500'
+        },
+        {
+          title: 'Leshan Giant Buddha',
+          lnglat: [103.771924, 29.544073],
+          description: `<p><strong>Location:</strong> Beside Lingyun Temple on the east bank of the Min River in southern Leshan</p><p><strong>Features:</strong> The world's largest stone-carved Buddha statue</p>`,
+          imageUrl: 'https://img0.baidu.com/it/u=3815080334,524816635&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=749'
+        },
+        {
+          title: 'Memorial to the Wartime Relocation of National Wuhan University',
+          lnglat: [103.751098, 29.557706],
+          description: `<p><strong>Location:</strong> In western Leshan</p><p><strong>Features:</strong> Commemorates the 75th anniversary of Wuhan University's relocation to Leshan</p>`,
+          imageUrl: 'https://bkimg.cdn.bcebos.com/pic/bd315c6034a85edfde17f5ac45540923dc5475a1?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080'
+        },
+        {
+          title: 'Former Site of Wuhan University Dormitory No. 5',
+          lnglat: [103.767309, 29.562531],
+          description: `<p><strong>Location:</strong> Present-day Leshan No. 5 Middle School</p>`,
+          imageUrl: ''
+        },
+        {
+          title: 'Former Site of Wuhan University Dormitory No. 1',
+          lnglat: [103.762245, 29.557608],
+          description: `<p><strong>Location:</strong> Near the current Petition Bureau of the Leshan Municipal People's Government</p>`,
+          imageUrl: ''
+        },
+        {
+          title: "Former Site of Wuhan University Women's Dormitory",
+          lnglat: [103.757009, 29.556255],
+          description: `<p><strong>Location:</strong> Near the current Leshan People's Hospital</p>`,
+          imageUrl: ''
+        },
+        {
+          title: 'Former Site of Wuhan University College of Science',
+          lnglat: [103.754772, 29.555788],
+          description: `<p><strong>Location:</strong> Present-day Hama Alley, Leshan</p>`,
+          imageUrl: ''
+        },
+        {
+          title: 'Former Site of Wuhan University College of Engineering',
+          lnglat: [103.75157, 29.557967],
+          description: `<p><strong>Location:</strong> Near the relocation memorial</p>`,
+          imageUrl: ''
+        },
+        {
+          title: 'Former Site of Wuhan University Dormitory No. 4',
+          lnglat: [103.750604, 29.556362],
+          description: `<p><strong>Location:</strong> Present-day Leshan No. 5 Middle School</p>`,
+          imageUrl: ''
+        },
+        {
+          title: 'Former Site of Wuhan University Dormitory No. 6',
+          lnglat: [103.748973, 29.55647],
+          description: `<p><strong>Location:</strong> Present-day Banzhuwan Community, Leshan</p>`,
+          imageUrl: ''
+        }
+      ];
+
+      // 添加标记点
+      locations.forEach(location => {
+        const infoWindowContent = createInfoWindow(location.title, location.description, location.imageUrl);
+
+        const infoWindow = new AMap.InfoWindow({
+          content: infoWindowContent,
+          offset: new AMap.Pixel(0, -30)
+        });
+
+        const markerIcon = (location.title === 'Leshan Confucian Temple' || location.title.includes('Wuhan University')) 
+          ? 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png' 
+          : 'https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png';
+
+        const marker = new AMap.Marker({
+          position: new AMap.LngLat(...location.lnglat),
+          icon: markerIcon,
+          title: location.title,
+          offset: new AMap.Pixel(-13, -30)
+        });
+
+        marker.on('click', () => {
+          infoWindow.open(map, marker.getPosition());
+        });
+
+        map.add(marker);
+      });
+    });
+  };
+
+  // 控件控制函数
+  function toggleScale(checkbox) {
+    if (checkbox.checked) scale?.show(); else scale?.hide();
+  }
+
+  function toggleToolBar(checkbox) {
+    if (checkbox.checked) toolBar?.show(); else toolBar?.hide();
+  }
+
+  function toggleControlBar(checkbox) {
+    if (checkbox.checked) controlBar?.show(); else controlBar?.hide();
+  }
+
+  function toggleOverViewShow(checkbox) {
+    if (checkbox.checked) overView?.show(); else overView?.hide();
+  }
+</script>     
+
+
+<!-- 统计数据 -->
+<section id="statistics" class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h3 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-primary mb-4">Activity Statistics</h3>
+      <p class="text-gray-600 max-w-2xl mx-auto">Visualization of daily steps and daily distance.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- steps数图表 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg">
+        <h4 class="text-lg font-semibold text-primary mb-4">Daily Step Count</h4>
+        <div class="ctrl text-center mb-4">
+          <button class="active px-4 py-2 rounded-full bg-[#ff8484] text-white" data-person="Participant 1" data-chart="steps">Participant 1</button>
+          <button class="active px-4 py-2 rounded-full bg-[#4e96cd] text-white" data-person="Participant 2" data-chart="steps">Participant 2</button>
+        </div>
+        <div id="stepsChart" class="chart"></div>
+      </div>
+
+      <!-- 里程图表 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg">
+        <h4 class="text-lg font-semibold text-primary mb-4">Daily Distance</h4>
+        <div class="ctrl text-center mb-4">
+          <button class="active px-4 py-2 rounded-full bg-[#ff8484] text-white" data-person="Participant 1" data-chart="distance">Participant 1</button>
+          <button class="active px-4 py-2 rounded-full bg-[#4e96cd] text-white" data-person="Participant 2" data-chart="distance">Participant 2</button>
+        </div>
+        <div id="distanceChart" class="chart"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 样式部分 -->
+<style>
+  .chart {
+    height: 300px;
+  }
+  .ctrl button {
+    border: none;
+    padding: 8px 18px;
+    margin: 0 6px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+  .ctrl button.active {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  .ctrl button[data-person="Participant 1"] {
+    background: #ff8484;
+    color: #fff;
+  }
+  .ctrl button[data-person="Participant 2"] {
+    background: #4e96cd;
+    color: #fff;
+  }
+</style>
+
+<!-- ECharts 图表脚本 -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+<script>
+  const dates = ['07-07', '07-08', '07-09', '07-10', '07-11', '07-12', '07-13'];
+  const raw = {
+    steps: {
+      'Participant 1': [6000, 11000, 10000, 4000, 16000, 11000, 5000],
+      'Participant 2': [7300, 20000, 11000, 4000, 14400, 10000, 10000]
+    },
+    distance: {
+      'Participant 1': [4.0, 7.3, 6.7, 2.7, 10.7, 7.3, 3.3],
+      'Participant 2': [4.9, 13.3, 7.3, 2.7, 9.6, 6.7, 6.7]
+    }
+  };
+
+  const colors = { 'Participant 1': '#ff8484', 'Participant 2': '#4e96cd' };
+  const stepsChart = echarts.init(document.getElementById('stepsChart'));
+  const distanceChart = echarts.init(document.getElementById('distanceChart'));
+
+  const state = {
+    steps: { 'Participant 1': true, 'Participant 2': true },
+    distance: { 'Participant 1': true, 'Participant 2': true }
+  };
+
+  function update(chartType) {
+    const chart = chartType === 'steps' ? stepsChart : distanceChart;
+    const isSteps = chartType === 'steps';
+    const series = [], legend = [];
+
+    Object.keys(colors).forEach(p => {
+      if (state[chartType][p]) {
+        series.push({
+          name: p,
+          type: isSteps ? 'bar' : 'line',
+          data: raw[chartType][p],
+          smooth: true,
+          areaStyle: isSteps ? null : { opacity: 0.3 },
+          itemStyle: { color: colors[p] },
+          lineStyle: { width: 3 },
+          barWidth: 25
+        });
+        legend.push(p);
+      }
+    });
+
+    const option = {
+      tooltip: {
+        trigger: 'axis',
+        formatter: params => {
+          let str = params[0].axisValue + '<br/>';
+          params.forEach(p => {
+            str += p.marker + ' ' + p.seriesName + ' : ' + p.value + (isSteps ? ' steps' : ' km') + '<br/>';
+          });
+          return str;
+        }
+      },
+      legend: { data: legend, bottom: 0 },
+      grid: { left: 40, right: 25, top: 30, bottom: 65 },
+      xAxis: { type: 'category', data: dates },
+      yAxis: { type: 'value', name: isSteps ? 'Daily Steps' : 'Daily Distance (km)' },
+      series: series,
+      animation: true,
+      animationDuration: 300
+    };
+    chart.setOption(option, true);
+  }
+
+  document.querySelectorAll('.ctrl button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const person = btn.dataset.person;
+      const chartType = btn.dataset.chart;
+      state[chartType][person] = !state[chartType][person];
+      btn.classList.toggle('active', state[chartType][person]);
+      update(chartType);
+    });
+  });
+
+  update('steps');
+  update('distance');
+
+  window.addEventListener('resize', () => {
+    stepsChart.resize();
+    distanceChart.resize();
+  });
+</script>
+
+<!-- 文物遗存列表 -->
+<section id="heritage-list" class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h3 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-primary mb-4">Key Heritage Relics</h3>
+      <p class="text-gray-600 max-w-2xl mx-auto">Explore the precious historic architecture and heritage relics of the Leshan Confucian Temple and the former Wuhan University site.</p>
+    </div>
+
+    <!-- 文物卡片容器 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="heritage-cards">
+      <!-- 示例卡片（可替换为动态加载） -->
+    </div>
+
+    <!-- Load More按钮 -->
+    <div class="text-center mt-12">
+      <button id="load-more" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center mx-auto">
+        <span>Load More</span>
+        <i class="fa fa-refresh ml-2"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- 样式（可选） -->
+<style>
+  .heritage-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  .heritage-card:hover {
+    transform: translateY(-5px);
+  }
+  .heritage-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .heritage-card .card-body {
+    padding: 16px;
+  }
+  .heritage-card h5 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  .heritage-card p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+  }
+</style>
+
+<!-- JavaScript 动态加载卡片 -->
+<script>
+  // 示例数据（你可以替换为真实数据）
+  const heritageData = [
+    {
+      title: "Dacheng Hall of the Confucian Temple",
+      description: "The main hall of the Confucian Temple, dedicated to Confucius, featuring a solemn and elegant architectural style.",
+      image: "https://aigc-image.bj.bcebos.com/miaobi/5mao/b%275LmQ5bGx5paH5bqZXzE3MjUxNTY0NTYuOTA1MDg2NV8xNzI1MTU2NDU3LjU5MDI2MjJfMTcyNTE1NjQ1OC40NzgyMjc0XzE3MjUxNTY0NTkuNDI2MTg0Mg%3D%3D%27/3.png"
+    },
+    {
+      title: "Lingxing Gate",
+      description: "The main gate of the Confucian Temple, symbolizing that Confucius may be compared to the literary star in the heavens.",
+      image: "https://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275LmQ5bGx5paH5bqZXzE3MzY4MDI4MTguMzA1NTc3Mw%3D%3D%27/0.png"
+    },
+    {
+      title: "Longshen Shrine",
+      description: "A witness to the special history of Chinese higher education institutions persisting in teaching during wartime.",
+      image: "https://wenxxy.lsnu.edu.cn/__local/E/98/75/ADE652B2CC4883F27239846C1FB_F835B76D_C2F8F.png"
+    },
+    {
+      title: "Leshan Giant Buddha",
+      description: "Majestic and solemn in presence, it is the largest cliff-carved stone statue in China.",
+      image: "https://bkimg.cdn.bcebos.com/pic/574e9258d109b3de9c82104600f57b81800a19d8e6c0"
+    }
+  ];
+
+  let loadedCount = 0;
+  const loadLimit = 3;
+
+  function loadCards() {
+    const container = document.getElementById("heritage-cards");
+    const remaining = heritageData.slice(loadedCount, loadedCount + loadLimit);
+    remaining.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "heritage-card";
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.title}">
+        <div class="card-body">
+          <h5>${item.title}</h5>
+          <p>${item.description}</p>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+    loadedCount += remaining.length;
+
+    // 如果已加载完所有数据，隐藏按钮
+    if (loadedCount >= heritageData.length) {
+      document.getElementById("load-more").style.display = "none";
+    }
+  }
+
+  document.getElementById("load-more").addEventListener("click", loadCards);
+
+  // 初始加载
+  window.addEventListener("DOMContentLoaded", loadCards);
+</script>
+
+        <!-- 关于项目 -->
+        <section id="about" class="py-16 bg-primary/5">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-primary mb-6">About the Leshan Confucian Temple & Former Wuhan University Site</h3>
+                        <p class="text-gray-700 mb-6 leading-relaxed">The Leshan Confucian Temple was first built during the Wude era of the Tang Dynasty and is one of the most well-preserved ancient Confucian temple complexes in southwestern China. During the War of Resistance Against Japanese Aggression, Wuhan University relocated to Leshan and used the temple as its campus, continuing education here for eight years and cultivating many outstanding talents. It was praised as the "Cambridge of the East."</p>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            This project aims to use modern technology to present the historic buildings and heritage relics of the Leshan Confucian Temple and the former Wuhan University site in the form of a digital map, contributing modestly to cultural preservation, academic research, and public education.
+                        </p>
+                        <div class="space-y-4 mt-8">
+                            <div class="flex items-start">
+                                <div class="bg-secondary/10 p-2 rounded-full text-secondary mr-4">
+                                    <i class="fa fa-map-signs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-1">Digitalization of Historical Maps</h4>
+                                    <p class="text-gray-600 text-sm">Transform traditional paper maps into interactive digital maps, making it easier for users to explore historical sites.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-secondary/10 p-2 rounded-full text-secondary mr-4">
+                                    <i class="fa fa-camera"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-1">Image Display of Important Historic Relics</h4>
+                                    <p class="text-gray-600 text-sm">Display large images on the webpage, allowing users to experience the charm of historic architecture.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-secondary/10 p-2 rounded-full text-secondary mr-4">
+                                    <i class="fa fa-book"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary mb-1">Visualization of Participant Footprint Data</h4>
+                                    <p class="text-gray-600 text-sm">Preserving this journey and its memories.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="bg-white rounded-xl shadow-xl overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                            <img src="https://bkimg.cdn.bcebos.com/pic/2fdda3cc7cd98d1001e9dee85b74af0e7bec55e73a9c" alt="Panoramic View of the Leshan Confucian Temple" class="w-full h-auto">
+                            <div class="p-6">
+                                <h4 class="font-semibold text-primary text-lg">Panoramic View of the Leshan Confucian Temple</h4>
+                                <p class="text-gray-600 text-sm">Most of the existing buildings of the Leshan Confucian Temple were reconstructed during the Ming and Qing dynasties. Covering an area of about 20,000 square meters, it is an important physical resource for studying ancient Chinese architectural art and Confucian culture.</p>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg overflow-hidden transform -rotate-3 hover:rotate-0 transition-transform duration-500 w-2/3">
+                            <img src="https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F1129%2F4ac72c95j00s4vwhf00dbd000hs00kup.jpg&thumbnail=660x2147483647&quality=80&type=jpg" alt="Former Wuhan University Site in Leshan" class="w-full h-auto">
+                            <div class="p-4">
+                                <h4 class="font-semibold text-primary">Former Wuhan University Site in Leshan</h4>
+                                <p class="text-gray-600 text-xs">During the War of Resistance Against Japanese Aggression, the teachers and students of Wuhan University continued education in Leshan, creating a brilliant legacy praised as "wartime glory, remembered through the ages."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 模态框 -->
+    <div id="heritage-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="relative">
+                <img id="modal-image" src="https://picsum.photos/id/1031/1200/600" alt="Heritage Relic Image" class="w-full h-64 md:h-80 object-cover">
+                <button id="close-modal" class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6 md:p-8">
+                <h3 id="modal-title" class="text-2xl font-bold text-primary mb-4">Heritage Relic Details</h3>
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span id="modal-type" class="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">Architectural Relic</span>
+                    <span id="modal-protection" class="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Provincial Cultural Heritage Protection Unit</span>
+                    <span id="modal-age" class="bg-purple-100 text-purple-800 text-xs font-medium px-3 py-1 rounded-full">Qing Dynasty</span>
+                </div>
+                <div class="prose max-w-none mb-6">
+                    <p id="modal-description">Detailed description of the heritage relic will be shown here...</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h4 class="font-semibold text-primary mb-2">Historical Background</h4>
+                        <p id="modal-history" class="text-gray-700">Historical background information will be shown here...</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-primary mb-2">Architectural Features</h4>
+                        <p id="modal-features" class="text-gray-700">Architectural feature information will be shown here...</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                    <h4 class="font-semibold text-primary mb-2 flex items-center">
+                        <i class="fa fa-map-marker text-secondary mr-2"></i> Location
+                    </h4>
+                    <div id="modal-map" class="w-full h-48 rounded-lg overflow-hidden"></div>
+                </div>
+                <div class="flex justify-end">
+                    <button id="close-modal-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-6 rounded-lg transition-colors">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 移动菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 如果是移动菜单，点击后Close
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+        
+        // 初始化文物卡片
+        const heritageCardsContainer = document.getElementById('heritage-cards');
+        function renderHeritageCards(sites) {
+            heritageCardsContainer.innerHTML = '';
+            
+            sites.forEach(site => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl shadow-lg overflow-hidden card-hover';
+                card.innerHTML = `
+                    <img src="${site.image}" alt="${site.name}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-lg font-bold text-primary">${site.name}</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${site.typeName}</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">${site.description}</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa fa-clock-o mr-1"></i> ${site.age}
+                            </div>
+                            <button class="view-card-details bg-primary hover:bg-primary/90 text-white text-sm px-4 py-2 rounded-lg transition-colors" data-id="${site.id}">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                heritageCardsContainer.appendChild(card);
+            });
+            
+            // 添加卡片点击事件
+            document.querySelectorAll('.view-card-details').forEach(button => {
+                button.addEventListener('click', function() {
+                    const siteId = parseInt(this.getAttribute('data-id'));
+                    openHeritageModal(siteId);
+                });
+            });
+        }
+        
+        // 初始化渲染卡片
+        if (typeof heritageSites !== 'undefined' && Array.isArray(heritageSites)) {
+            renderHeritageCards(heritageSites);
+        }
+        
+         
+        // 模态框相关
+        const heritageModal = document.getElementById('heritage-modal');
+        const closeModal = document.getElementById('close-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        
+        function openHeritageModal(siteId) {
+            if (typeof heritageSites === 'undefined' || !Array.isArray(heritageSites)) return;
+            const site = heritageSites.find(s => s.id === siteId);
+            if (!site) return;
+            
+            document.getElementById('modal-title').textContent = site.name;
+            document.getElementById('modal-image').src = site.image;
+            document.getElementById('modal-image').alt = site.name;
+            document.getElementById('modal-type').textContent = site.typeName;
+            document.getElementById('modal-protection').textContent = site.protection;
+            document.getElementById('modal-age').textContent = site.age;
+            document.getElementById('modal-description').textContent = site.description;
+            document.getElementById('modal-history').textContent = site.history;
+            document.getElementById('modal-features').textContent = site.features;
+            
+            // 初始化模态框内的地图
+            const modalMap = L.map('modal-map').setView([site.location.lat, site.location.lng], 18);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(modalMap);
+            
+            L.marker([site.location.lat, site.location.lng], { icon: iconTypes[site.type] })
+                .addTo(modalMap)
+                .bindPopup(`<b>${site.name}</b><br>${site.description.substring(0, 30)}...`)
+                .openPopup();
+            
+            // 显示模态框
+            heritageModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // 防止背景滚动
+        }
+        
+        function closeModalFunc() {
+            heritageModal.classList.add('hidden');
+            document.body.style.overflow = ''; // 恢复背景滚动
+            
+            // 销毁模态框内的地图以释放资源
+            if (typeof modalMap !== 'undefined') {
+                modalMap.remove();
+            }
+        }
+        
+        closeModal.addEventListener('click', closeModalFunc);
+        closeModalBtn.addEventListener('click', closeModalFunc);
+        
+        // 点击模态框外部Close
+        heritageModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModalFunc();
+            }
+        });
+        
+        // 点击弹出窗口中的View Details按钮
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('view-details')) {
+                const siteId = parseInt(e.target.getAttribute('data-id'));
+                openHeritageModal(siteId);
+            }
+        });
+        
+            
+        // Load More按钮（模拟）
+        document.getElementById('load-more').addEventListener('click', function() {
+            this.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> Loading...';
+            
+            setTimeout(() => {
+                this.innerHTML = 'No more content <i class="fa fa-check ml-2"></i>';
+                this.disabled = true;
+                this.classList.add('opacity-70', 'cursor-not-allowed');
+            }, 1500);
+        });
+    </script>
+</body></html>    
